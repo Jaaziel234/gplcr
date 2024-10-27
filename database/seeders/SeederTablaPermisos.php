@@ -26,7 +26,12 @@ class SeederTablaPermisos extends Seeder
             'ver-equipo',
             'crear-equipo',
             'editar-equipo',
-            'borrar-equipo'
+            'borrar-equipo',
+
+            'ver-sucursal',
+            'crear-sucursal',
+            'editar-sucursal',
+            'borrar-sucursal'
         ];
 
         foreach($permisos as $permiso) {

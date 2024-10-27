@@ -16,7 +16,7 @@
             <div class="table-responsive">
               <table id="miTabla" class="table" style="width:100%">
                 <thead style="background-color:#6777ef">
-                  <th style="display: none;">ID</th>
+                  <th style="color:#fff;">ID</th>
                   <th style="color:#fff;">Nombre</th>
                   <th style="color:#fff;">Sucursal</th>
                   <th style="color:#fff;">E-mail</th>
@@ -28,7 +28,7 @@
 
                   @foreach ($usuarios as $usuario)
                   <tr>
-                    <td style="display: none;">{{ $usuario->id }}</td>
+                    <td>{{ $usuario->id }}</td>
                     <td>{{ $usuario->name }}</td>
                     <td>
                       @if ($usuario->userPivot && $usuario->userPivot->sucursal)

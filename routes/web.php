@@ -10,6 +10,7 @@ use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\MovimientoEquipoController;
 use App\Http\Controllers\MovimientoEquipoDetalleController;
 use App\Http\Controllers\MovimientoEquipoSalidaController;
+use App\Http\Controllers\SucursalController;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\MovimientoEquipo;
@@ -36,9 +37,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Quitar este codigo para que pueda redireccionar a formulario de registro
-/* Route::get('/register', function () {
+Route::get('/register', function () {
     return redirect('/login'); // Redireccionar a la ruta de login
-}); */
+});
 
 //y creamos un grupo de rutas protegidas para los controladores
 
@@ -80,5 +81,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('equipos', EquipoController::class);
+    Route::resource('sucursales', SucursalController::class);
     Route::resource('movimientos', MovimientoEquipoController::class);
 });

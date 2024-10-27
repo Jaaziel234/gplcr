@@ -3,7 +3,7 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h3 class="page__heading">Roles</h3>
+        <h3 class="page__heading">Sucursales</h3>
     </div>
     <div class="section-body">
         <div class="row">
@@ -12,34 +12,40 @@
                     <div class="card-body">
 
                         <div class="row d-flex flex-wrap mb-3">
-                            @can('crear-rol')
-                            <a class="btn btn-warning" href="{{ route('roles.create') }}">Nuevo</a>
+                            @can('crear-sucursal')
+                            <a class="btn btn-warning" href="{{ route('sucursales.create') }}">Nuevo</a>
                             @endcan
                         </div>
                         <div class="table-responsive">
                             <table id="miTabla" class="table table-striped table-bordered table-reponsive" style="width:100%">
                                 <thead style="background-color:#6777ef">
-                                <th style="color:#fff;">Id</th>
-                                    <th style="color:#fff;">Rol</th>
+                                    <th style="color:#fff;">Id</th>
+                                    <th style="color:#fff;">Sucursal</th>
+                                    <th style="color:#fff;">Ubicación</th>
+                                    <th style="color:#fff;">Creado</th>
+                                    <th style="color:#fff;">Actualizado</th>
                                     <th style="color:#fff;">Acciones</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($roles as $role)
+                                    @foreach ($sucursales as $sucursal)
                                     <tr>
-                                    <td>{{ $role->id }}</td>
-                                        <td>{{ $role->name }}</td>
+                                        <td>{{ $sucursal->id }}</td>
+                                        <td>{{ $sucursal->nombre_sucursal }}</td>
+                                        <td>{{ $sucursal->direccion }}</td>
+                                        <td>{{ $sucursal->updated_at }}</td>
+                                        <td>{{ $sucursal->created_at }}</td>
                                         <td>
-                                            @can('editar-rol')
-                                            <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Editar</a>
-                                            @endcan
+                                        @can('editar-sucursal')
+                                            <a class="btn btn-primary" href="{{ route('sucursales.edit',$sucursal->id) }}">Editar</a>
+                                        @endcan
 
-                                            @can('borrar-rol')
-                                            <form action="{{ route('roles.destroy', $role->id) }}" method="POST" style="display:inline">
+                                        @can('borrar-rol')
+                                            <form action="{{ route('sucursales.destroy', $sucursal->id) }}" method="POST" style="display:inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="eliminarInventario(event)">Borrar</button>
+                                                <button type="submit" class="btn btn-danger" onclick="eliminarSucursal(event)">Borrar</button>
                                             </form>
-                                            @endcan
+                                        @endcan
 
                                         </td>
                                     </tr>
@@ -76,7 +82,7 @@
         });
     });
 
-    function eliminarInventario(event) {
+    function eliminarSucursal(event) {
         // Prevenir la acción predeterminada del formulario (envío)
         event.preventDefault();
 
